@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+data/raw/*.pdf
+data/processed/faiss_index/
+data/processed/bm25_index.pkl
+data/processed/chunks.jsonl
+.DS_Store
+*.egg-info/
+venv/

@@ -1,0 +1,718 @@
+{
+  "hybrid": [
+    {
+      "query_id": "D01",
+      "query_type": "direct",
+      "query": "What biomarkers did Brandhorst et al. use to measure biological age changes from the fasting-mimicking diet?",
+      "answer_preview": "Brandhorst et al. used a clinical-chemistry based biological-age estimate composed of seven markers: albumin, alkaline phosphatase, serum creatinine, C-reactive protein (CRP), HbA1c, systolic blood pressure, and total cholesterol (used together to form the single biological-age measure) (brandhorst_",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 1,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe listed seven biomarkers (albumin, alkaline phosphatase, serum creatinine, C-reactive protein, HbA1c, systolic blood pressure, and total cholesterol) are explicitly stated in the paper as the clinical-chemistry components combined into the biological-age estimate.",
+      "caveats": [],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D02",
+      "query_type": "direct",
+      "query": "How does the AMPK/SIRT1/PGC-1\u03b1 signaling axis respond to exercise?",
+      "answer_preview": "In the provided sources, exercise activates the energy sensor AMPK; this activation is a proximal response to energetic stress during exercise (AMPK activation). Activated AMPK then promotes SIRT1 activity (via changes in NAD+/NADH), and SIRT1 deacetylates and thereby activates the transcriptional c",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 9,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll statements in the answer are supported by the provided passages: exercise activates AMPK; AMPK can stimulate SIRT1 via changes in NAD+/NADH; SIRT1 deacetylates and activates PGC-1\u03b1; exercise increases PGC-1\u03b1 which coactivates NRF1/TFAM to drive mitochondrial biogenesis and improve quality control (mitophagy, reduced ROS); and AMPK regulates mitochondrial dynamics and Ulk1-mediated mitophagy.",
+      "caveats": [
+        "The provided excerpts describe the signaling cascade and mechanistic links but do not give quantitative timing, tissue-specific differences, or magnitudes of change after exercise."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D03",
+      "query_type": "direct",
+      "query": "What role does autophagy play in exercise-induced mitochondrial biogenesis?",
+      "answer_preview": "Summary: In this mouse study, endurance exercise increased basal autophagic/mitophagy flux in skeletal muscle, and that autophagy was required for the exercise-induced increases in mitochondrial biogenesis markers. Acute pharmacological inhibition of autophagy (colchicine) abolished the exercise-ind",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 6,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll statements in the answer are supported by the provided excerpts: the study shows increased autophagic/mitophagy flux with endurance exercise, colchicine inhibition abolished PGC\u20111\u03b1 and mitochondrial marker induction, PINK1/Parkin were unchanged while Bnip3 increased, and the authors interpret this as tight coupling with rapid, transcriptionally regulated mitochondrial turnover.",
+      "caveats": [
+        "Mechanistic details linking mitophagy to the transcriptional control of mitochondrial biogenesis are not fully defined in the provided text (ju_2016, ju_2016__introduction__001).",
+        "The dependence on autophagy was shown using short-term pharmacological inhibition (colchicine) in trained mice; results may differ with other models or chronic genetic loss of autophagy (ju_2016, ju_2016__results__002).",
+        "The study reports PINK1/Parkin were unchanged and highlights Bnip3 involvement, but regulatory kinases/phosphatases for Bnip3 are stated as not known in the text (ju_2016, ju_2016__results__001; ju_2016, ju_2016__results__002)."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D04",
+      "query_type": "direct",
+      "query": "According to Barry et al., does cardiorespiratory fitness or body fatness have a stronger effect on all-cause mortality?",
+      "answer_preview": "Barry et al. They further state that \"unfit individuals have twice the risk of death regardless of BMI, while fit and overweight and obese individuals have similar mortality risk as their normal weight counterparts\" (barry_2014, barry_2014__discussion__001). The authors note limitations, including t",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 4,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately quotes the paper's conclusions and correctly cites the stated limitations (only ten articles included and a sensitivity analysis to address overlap), all of which appear in the provided context.",
+      "caveats": [
+        "The review included only ten articles, which the authors list as a limitation (barry_2014, barry_2014__discussion__001).",
+        "The authors performed a sensitivity analysis to address possible population overlap between studies (barry_2014, barry_2014__methods__000).",
+        "Entity guard: removed 1 sentence(s) containing terms not found in context: ['BMI/']"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D05",
+      "query_type": "direct",
+      "query": "What are the key criteria for evaluating aging biomarkers according to the Cell 2023 review?",
+      "answer_preview": "The Cell 2023 review frames several key, interrelated criteria for evaluating biomarkers of aging.  Summarized succinctly, the principal criteria are:\n\n- Age-sensitivity and outcome prediction: the biomarker should (1) correlate with multiple age-sensitive features after adjusting for chronological ",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 10,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll listed criteria (age-sensitivity/outcome prediction, responsiveness, mechanistic grounding, generalizability, integrative multisystem performance, distinction of progress vs. pace, clinical surrogate validation, and practical/sample/cost considerations) are explicitly described in the provided Cell 2023 passages and are accurately summarized.",
+      "caveats": [
+        "These criteria are synthesized from the review\u2019s discussion of validity, mechanistic grounding, generalizability, and practical considerations and reflect the review\u2019s recommended framework rather than a single numbered checklist."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D06",
+      "query_type": "direct",
+      "query": "How does long-term aerobic exercise preserve muscle mass during aging?",
+      "answer_preview": "Each mechanism is supported by human and animal data in the provided sources.\n\nDetails and supporting citations:\n- Preservation of muscle mass and function with lifelong aerobic training is observed in humans: \u201clifelong aerobic exercise is also effective at maintaining skeletal muscle mass and funct",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 10,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer's mechanisms and examples (mitochondrial adaptations and mitophagy, MU/NMJ preservation, myostatin and ubiquitin-ligase changes, angiogenesis and reduced intermuscular lipids, and masters-athlete human data) are all directly supported by the cited passages, and the original review's caveat about needing further research is also quoted.",
+      "caveats": [
+        "The review states that \"additional research is still needed on how aerobic exercise... preserves muscle mass, and function with age.\" (s2468867319_2019, s2468867319_2019__conclusion__000)",
+        "Entity guard: removed 1 sentence(s) containing terms not found in context: ['MU/NMJ']"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D07",
+      "query_type": "direct",
+      "query": "What lifestyle factors from Blue Zones are associated with longevity?",
+      "answer_preview": "Primary lifestyle features linked to longevity in Blue Zones reported in the sources are: low smoking prevalence; ample physical activity / \u201cnatural movement\u201d; favorable (largely plant-based) nutrition; strong social bonds and intergenerational connections; and environmental features such as clean a",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 4,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll listed features are directly supported by the provided passages (e.g., low smoking prevalence, physical activity/natural movement, plant\u2011based nutrition, social/intergenerational bonds, and environmental factors like clean air/biodiversity/climate), and the cautious note about questioning the Blue Zones concept is also documented in the context.",
+      "caveats": [
+        "The Blue Zones associations are observational and the concept has been questioned due to issues such as poor recordkeeping and changing/vanishing advantages in some regions (furrer_handschin_2025, furrer_handschin_2025__results__001).",
+        "Specific dietary and environmental details come from comparative analyses with other long-lived regions (nutrients_2025, nutrients_2025__methods__000)."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D08",
+      "query_type": "direct",
+      "query": "What epigenetic biomarkers change in response to dietary and exercise interventions?",
+      "answer_preview": "Summary \u2014 types and examples\n\n1) Types of epigenetic marks that change with diet/exercise: DNA methylation (DNAm), histone modifications, and microRNA (miRNA) expression (these are the main epigenetic signatures discussed). (nutrients_2023a, nutrients_2023a__body__000)\n\n2) DNA methylation (examples ",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 16,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately summarizes epigenetic types and specific DNAm and miRNA examples reported in the provided passages, and correctly notes that histone modifications are mentioned but most intervention examples focus on DNAm and miRNAs and that further validation is needed.",
+      "caveats": [
+        "Most reported findings are associative and come from specific trials/populations; many markers need further validation before clinical use (see source). (nutrients_2023a, nutrients_2023a__body__000)"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D09",
+      "query_type": "direct",
+      "query": "What minimum weekly physical activity threshold is associated with reduced mortality risk?",
+      "answer_preview": "The study reports minimum MVPA increases in minutes/day. In the combined SPAN model, a theoretical minimum increase of 1.6 min/day MVPA was associated with a 10% lower all-cause mortality risk; when considered individually, an additional 2 min/day of MVPA was associated with \u224810% lower mortality. Th",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 4,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately reflects the paper: the combined SPAN model reports a 1.6 min/day MVPA increase associated with ~10% lower mortality and the individual MVPA dose is ~2 min/day for a similar effect, and the study notes the 150 min/week guideline (~20 min/day) while reporting observed associations in minutes/day.",
+      "caveats": [
+        "The paper reports MVPA associations in minutes/day rather than weekly totals; it does reference the 150 min/week guideline but does not report the minimum associated weekly threshold directly.",
+        "The study is observational and cannot establish causality."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "D10",
+      "query_type": "direct",
+      "query": "What metabolic biomarkers improved with concurrent aerobic and resistance training in type 2 diabetes patients?",
+      "answer_preview": "Concurrent continuous aerobic plus short\u2011rest resistance training improved these metabolic biomarkers in type 2 diabetes patients: HbA1c (reduced) (diabetol_metab_2025, diabetol_metab_2025__abstract__000); HOMA\u2011IR (reduced) (diabetol_metab_2025, diabetol_metab_2025__abstract__000); HDL\u2011C (increased)",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 8,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately states the direction of effects for HbA1c, HOMA\u2011IR, HDL\u2011C, TG, and TC reported in the paper (with supporting SMDs and significance in the abstract) and correctly notes the meta-analysis included 11 randomized trials (438 participants) and observed heterogeneity and mainly 12\u2011week interventions.",
+      "caveats": [
+        "Heterogeneity was reported across some outcomes (e.g., TG, HbA1c, HOMA\u2011IR).",
+        "Most included interventions were 12 weeks, so longer\u2011term effects are less certain."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "S01",
+      "query_type": "synthesis",
+      "query": "Compare the molecular aging biomarker frameworks in Moqri et al. (Cell 2023) versus Furrer & Handschin (Physiol Rev 2025) \u2014 where do they agree and disagree?",
+      "answer_preview": "Summary \u2014 high-level: Both papers present structured frameworks for evaluating aging biomarkers and emphasize the need for rigorous validation, mechanistic relevance, and generalizability. They differ in emphasis: Moqri et al. (Cell 2023) formalize concepts like AgeDev and the odometer vs speedomete",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 8,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": false,
+      "faithfulness_note": "UNFAITHFUL\n\nThe response attributes the Cell 2023 framework to \"Moqri et al.,\" but that author name is not present or supported in the provided CONTEXT; aside from this unsupported attribution, the substantive claims in the answer are consistent with the supplied passages.",
+      "caveats": [
+        "Analysis is limited to the provided excerpts from the two papers and cites only the quoted passages above.",
+        "Broader nuances or additional points made elsewhere in the full papers are not represented here."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "S02",
+      "query_type": "synthesis",
+      "query": "How do caloric restriction, intermittent fasting, and fasting-mimicking diets compare in their mechanisms and evidence for longevity benefits?",
+      "answer_preview": "Short answer \u2014 shared targets, different delivery and evidence. All three approaches converge on nutrient\u2011sensing pathways (mTOR/TOR, insulin/IGF signaling, AMPK) but differ in how they engage them and in the strength of longevity evidence across organisms and humans.\n\nMechanisms \u2014 caloric restricti",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 11,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer\u2019s statements are supported by the provided passages: CR, IF, and related dietary interventions are described as converging on nutrient\u2011sensing pathways (mTOR/TOR, IIS/insulin\u2011IGF, AMPK), the mechanistic descriptions (AMPK activation, mTOR inhibition, autophagy, sirtuins/heat\u2011shock proteins) and the evidence summaries for model organisms and humans (including CALERIE and the lack of clear human longevity proof) all appear in the cited context.",
+      "caveats": [
+        "Human longevity evidence is heterogeneous and not definitive; trials report health benefits but not clear lifespan extension in humans (furrer_handschin_2025__results__014).",
+        "Study variability (designs, participants, protocols) limits generalizability and direct comparison across interventions (nutrients_2024__results__002).",
+        "Entity guard: removed 3 sentence(s) containing terms not found in context: ['FMD', 'IIS/']"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "S03",
+      "query_type": "synthesis",
+      "query": "Synthesize how exercise affects mitochondrial function across the corpus \u2014 what molecular pathways are shared across studies?",
+      "answer_preview": "Across the corpus, exercise-related studies converge on a small set of recurring molecular themes by which exercise alters mitochondrial function.  First, exercise activates canonical mitochondrial biogenesis programs centered on PGC-1\u03b1 (PGC-1 alpha is repeatedly identified as a nodal regulator and ",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 11,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll major claims in the answer are directly supported by the provided passages (PGC\u20111\u03b1 and p38 MAPK role, mitochondria-localized AMPK and mitophagy, necessity of autophagy/mitophagy including Parkin, emphasis on mitochondrial proteostasis, antioxidant responses, and TFEB induction in a PGC\u20111\u03b1\u2013dependent manner).",
+      "caveats": [
+        "The corpus notes that the impact of long-term endurance exercise on proteostatic mechanisms is underexplored (s2468867319, s2468867319_2019__introduction__004).",
+        "Authors caution that acute snapshots of responses can be misleading for assessing chronic adaptations, implying differences across time courses and study designs (s2468867319, s2468867319_2019__introduction__004)."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "S04",
+      "query_type": "synthesis",
+      "query": "What do the Stamatakis, Koemel, and NHANES studies collectively suggest about the optimal combination of sleep, physical activity, and nutrition for longevity?",
+      "answer_preview": "Collectively, these studies indicate that the longevity advantage is greatest when sleep, physical activity, and diet are reasonably optimal together rather than treated in isolation. Stamatakis et al. report an \u201coptimal\u201d SPAN combination of moderate sleep (\u22487.2\u20138.0 h/day), high MVPA, and higher die",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 6,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll specific numerical claims and conclusions in the answer (optimal SPAN ranges, the small concurrent improvements and associated mortality/lifespan effects, and the emphasis on synergistic effects and supporting NHANES clustering work) are directly supported by the provided excerpts.",
+      "caveats": [
+        "The papers frame some estimates as \"theoretical\" and interpret associations under an \"assuming causal relationships\" qualifier, i.e., these are observational associations rather than randomized causal proofs (as stated in the source texts).",
+        "Entity check: 3 term(s) in the answer may not appear in the retrieved context: ['57.5\u201372.5', 'NHANES', 'The Lancet']"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "S05",
+      "query_type": "synthesis",
+      "query": "Across the corpus, what methodological limitations are most commonly acknowledged in human longevity research?",
+      "answer_preview": "Across the provided corpus the most commonly acknowledged methodological limitations in human longevity research are:\n\n- Limited translatability from model organisms: findings in canonical experimental models may not be directly extrapolatable or feasible in humans (furrer_handschin_2025, furrer_han",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 13,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nEach bullet point is directly supported by the cited passages (e.g., limited translatability in model organisms, need for long longitudinal studies, lack of consensus for molecular clocks, technical variability and noise, tissue/circadian sampling effects, laboratory and socioeconomic confounders, poor recordkeeping in cohorts like Blue Zones, omics cost/feasibility limits, telomere assay variability, and drug\u2013lifestyle interaction concerns).",
+      "caveats": [
+        "Summary is limited to the excerpts provided from the furrer_handschin_2025 corpus and does not include literature outside these chunks."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "E01",
+      "query_type": "edge",
+      "query": "What does the corpus say about the effect of smoking cessation on longevity?",
+      "answer_preview": "The provided corpus does not report any direct evidence on the effect of smoking cessation on longevity. The texts only note that smoking is a strong modifiable driver of premature mortality and that further research is needed on how behaviours studied (sleep, physical activity, diet) interact with ",
+      "confidence": "medium",
+      "no_evidence": true,
+      "num_citations": 2,
+      "citation_precision": 1.0,
+      "no_evidence_correct": false,
+      "faithful": true,
+      "faithfulness_note": "No-evidence response; nothing to verify.",
+      "caveats": [
+        "No direct estimates of the effect of smoking cessation (e.g., years of life gained) are provided in the corpus.",
+        "No information on timing/age at cessation, duration since quitting, or dose\u2013response of quitting is present.",
+        "No subgroup analyses, randomized trials, or longitudinal quit-outcome data are reported in the provided texts."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "E02",
+      "query_type": "edge",
+      "query": "Summarize the findings from Zhang et al. 2021 on ketogenic diets and aging.",
+      "answer_preview": "I could not find Zhang et al. 2021 in the provided excerpts, so I cannot summarize that specific paper. The only text here that discusses ketogenic diets (from a different review) states the diet\u2019s clinical lipid and weight effects, quoted below. To summarize Zhang et al. 2021 I would need the paper",
+      "confidence": "low",
+      "no_evidence": true,
+      "num_citations": 1,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "No-evidence response; nothing to verify.",
+      "caveats": [
+        "The provided context does not include Zhang et al. 2021 or any excerpt explicitly attributed to that paper.",
+        "I can only quote a review summary about ketogenic diets from the supplied material; that is not a substitute for Zhang et al. 2021.",
+        "If you supply the Zhang et al. 2021 text or the specific chunk(s) containing it, I can produce a grounded summary with direct quotes and citations."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "E03",
+      "query_type": "edge",
+      "query": "According to Barry et al. 2014, what did the Methods section describe about how studies were selected for the meta-analysis?",
+      "answer_preview": "Barry et al. (barry_2014, barry_2014__background__000) They specified inclusion criteria: prospective design and all-cause mortality as the main outcome; CRF assessed with a maximal or VO2peak test; BMI directly measured; CRF and BMI jointly assessed on all-cause mortality; and the reference group d",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 10,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll statements match the provided excerpts from Barry et al.: the inclusion criteria, ProQuest screening of the first 300 records, contacting authors for additional hazard-ratio/sample/follow-up data, exclusion of three articles leaving 10, and the sensitivity analysis for population overlap are all explicitly described in the context.",
+      "caveats": [
+        "Entity guard: removed 1 sentence(s) containing terms not found in context: ['BMI/']"
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "E04",
+      "query_type": "edge",
+      "query": "Is there evidence that caloric restriction is harmful to longevity?",
+      "answer_preview": "Short answer: Yes, there is evidence\u2014primarily from animal studies\u2014that caloric restriction (CR) can be harmful or reduce lifespan in some genetic backgrounds and sexes, and can cause health problems; human evidence about effects on longevity is unclear.\n\nEvidence from animals: In genetically divers",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 6,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately reflects the cited passages: animal studies report strain- and sex-dependent harmful or suboptimal effects of CR (loss of lean mass, immune issues, sex-specific opposite lifespan effects), and human trials show short-term biomarker benefits (e.g., CALERIE) but no clear evidence of longevity benefit and documented potential adverse effects.",
+      "caveats": [
+        "Evidence for harm is strongest in animal (rodent and other model) studies and is influenced by genetic background and sex.",
+        "Human data do not show clear longevity harm but are limited; short-term trials report biomarker benefits while reviewers note lack of long-term mortality evidence."
+      ],
+      "mode": "hybrid"
+    },
+    {
+      "query_id": "E05",
+      "query_type": "edge",
+      "query": "What pharmaceutical drugs does the corpus recommend for extending lifespan?",
+      "answer_preview": "None. The corpus explicitly states that \u201cno evidence for efficacy (and safety) for the application of any of these pharmacological and interventional factors on the human aging process exists\u201d (furrer_handschin_2025, furrer_handschin_2025__results__007). The review lists many candidate compounds tha",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 4,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately summarizes the provided passages: the review explicitly states there is no evidence for efficacy/safety of proposed anti\u2011aging drugs in humans, lists the candidate compounds, and notes rapamycin's reproducible effects in model organisms but no clinical trials for longevity\u2014claims supported by the cited chunks.",
+      "caveats": [
+        "The corpus lists many candidate drugs but repeatedly emphasizes lack of proven efficacy and safety in humans.",
+        "Rapamycin shows reproducible effects in model organisms but lacks clinical trials for human longevity according to the corpus."
+      ],
+      "mode": "hybrid"
+    }
+  ],
+  "vector_only": [
+    {
+      "query_id": "D01",
+      "query_type": "direct",
+      "query": "What biomarkers did Brandhorst et al. use to measure biological age changes from the fasting-mimicking diet?",
+      "answer_preview": "Brandhorst et al. used a multi-system clinical-chemistry biomarker panel to estimate biological age: albumin; alkaline phosphatase; serum creatinine; C-reactive protein (CRP); HbA1c; systolic blood pressure; and total cholesterol (brandhorst_2024, brandhorst_2024__results__006).",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 1,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe listed seven biomarkers exactly match those stated in the paper as comprising the clinical-chemistry biological age estimate (albumin, alkaline phosphatase, serum creatinine, C\u2011reactive protein, HbA1c, systolic blood pressure, and total cholesterol).",
+      "caveats": [],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D02",
+      "query_type": "direct",
+      "query": "How does the AMPK/SIRT1/PGC-1\u03b1 signaling axis respond to exercise?",
+      "answer_preview": "In the excerpts provided, exercise activates AMPK, which then engages SIRT1 and PGC-1\u03b1 in a coordinated response that improves mitochondrial function and quality control. Specifically: \n\n- Exercise activates AMPK (exercise is reported as a crucial stimulus for AMPK activation) and under low-energy c",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 10,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll key claims in the answer are directly supported by the provided excerpts (exercise activates AMPK; AMPK can stimulate SIRT1 via the NAD+/NADH ratio; a swimming study raised hippocampal SIRT1 and PGC\u20111\u03b1; SIRT1 deacetylates and activates PGC\u20111\u03b1 to promote mitochondrial genes; and AMPK mediates mitochondrial fission, Ulk1 phosphorylation for mitophagy, and exercise restores mitochondrial quality control).",
+      "caveats": [
+        "The excerpts describe the pathway and experimental observations but do not provide quantitative details (timing, exercise intensity, tissue-specific kinetics) or mechanistic stoichiometry in these snippets.",
+        "Entity guard: removed 1 sentence(s) containing terms not found in context: ['NRF1/TFAM']"
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D03",
+      "query_type": "direct",
+      "query": "What role does autophagy play in exercise-induced mitochondrial biogenesis?",
+      "answer_preview": "The provided mouse data indicate autophagy is permissive and regulatory for exercise-induced mitochondrial biogenesis in skeletal muscle. Swimming training increased basal autophagic flux (LC3-II) in muscle (ju_2016, ju_2016__abstract__000). When autophagy/mitophagy was active, mitochondrial biogene",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 4,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll statements in the answer are supported by the provided passages: the study reports increased LC3-II flux with swimming, exercise-induced upregulation of PGC-1\u03b1/SDH/COX IV that was abolished by colchicine, and the text cites autophagy-deficient mice showing attenuated exercise-induced mitochondrial and performance benefits.",
+      "caveats": [
+        "Findings are from mouse skeletal muscle experiments (swimming training and short-term colchicine treatment) rather than human studies (ju_2016, ju_2016__abstract__000; ju_2016, ju_2016__results__002)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D04",
+      "query_type": "direct",
+      "query": "According to Barry et al., does cardiorespiratory fitness or body fatness have a stronger effect on all-cause mortality?",
+      "answer_preview": "Barry et al. conclude that cardiorespiratory fitness (CRF) has a stronger effect on all-cause mortality than body fatness (BMI): \"the results indicate that the risk of death was dependent upon CRF level and not BMI.\" (barry_2014, barry_2014__discussion__000) They also state that \"CRF was a better pr",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 3,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll three quoted/claimed points \u2014 that risk was dependent on CRF not BMI, that CRF was a better predictor than BMI, and that only ten articles were included \u2014 are directly supported by the provided discussion excerpts.",
+      "caveats": [
+        "The meta-analysis included only ten articles.",
+        "The authors note possible population overlap between some studies (sensitivity analyses were performed)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D05",
+      "query_type": "direct",
+      "query": "What are the key criteria for evaluating aging biomarkers according to the Cell 2023 review?",
+      "answer_preview": "The review defines several key evaluation criteria for aging biomarkers. Briefly these are:\n\n- Age-sensitivity: the biomarker should (1) correlate with multiple age-sensitive features after adjusting for chronological age and (2) predict all-cause mortality (i.e., relate to AgeDev and outcomes). (ce",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 12,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll listed criteria and claims are directly supported by the provided passages (age-sensitivity, response criteria, mechanistic relevance, generalizability, composite performance, pace vs progress distinction, sample/tissue concerns, and surrogate-endpoint/validation requirements), and the mention of using geroprotectors and cross-cohort validation to benchmark biomarkers is explicitly discussed in the excerpts.",
+      "caveats": [
+        "The review stresses that many biomarkers remain to be clinically validated across cohorts and that no aging biomarkers have yet achieved regulatory approval for clinical use (see cited passages). (cell_2023, cell_2023__methods__001)"
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D06",
+      "query_type": "direct",
+      "query": "How does long-term aerobic exercise preserve muscle mass during aging?",
+      "answer_preview": "Short summary: Long-term aerobic (endurance) exercise preserves skeletal muscle mass and function during aging by maintaining mitochondrial health and proteostasis, supporting neuromuscular function, modulating growth regulators, and promoting local vascular and anabolic adaptations (see citations).",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 10,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll major claims in the answer (mitochondrial biogenesis/PGC\u20111\u03b1, proteostasis/mitophagy, preserved MU/NMJ function, reduced myostatin and Akt\u2013mTOR/anabolic signaling, and angiogenesis) are directly supported by the cited passages, and the caveat about incomplete mechanistic understanding is also stated in the provided context.",
+      "caveats": [
+        "Some molecular mechanisms remain incompletely understood and additional research is needed (s2468867319_2019, s2468867319_2019__conclusion__000)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D07",
+      "query_type": "direct",
+      "query": "What lifestyle factors from Blue Zones are associated with longevity?",
+      "answer_preview": "The provided review links several lifestyle features of Blue Zones to longevity. Key factors described are: 1) plant\u2011based, nutrient\u2011dense diets (legumes, whole grains, vegetables, healthy fats) (nutrients_2025, nutrients_2025__methods__000); 2) microbiome\u2011supporting foods (high\u2011fiber intake and fer",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 8,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll listed factors (plant\u2011based diets, microbiome\u2011supporting foods, natural movement, strength/functional maintenance, social cohesion, favorable environments) and the gut\u2011microbiome mediation are directly described in the provided passages, so the answer accurately reflects the context.",
+      "caveats": [
+        "These points summarize what the provided review attributes to Blue Zones (and the Cilento case study); the source frames some items as policy or preventive recommendations rather than quantified causal effects."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D08",
+      "query_type": "direct",
+      "query": "What epigenetic biomarkers change in response to dietary and exercise interventions?",
+      "answer_preview": "Multiple types of epigenetic biomarkers have been reported to change after dietary and/or exercise interventions. Main categories and examples reported in intervention studies include:\n\n- DNA methylation (DNAm) of specific genes: examples include reductions in ADRB3 methylation after a folate + haze",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 12,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer's examples and summary are directly supported by the provided passages (gene-specific DNAm changes such as ADRB3, CPT1A, LINC00319, CD36/CD14/FADS1/PDK4; global markers LINE-1/LUMA; numerous circulating miRNAs and DNMT modulation), and the caution that further validation is needed is also stated in the source.",
+      "caveats": [
+        "Many reported epigenetic changes are associative and the authors state that further validation is needed before clinical application (nutrients_2023a, nutrients_2023a__body__004).",
+        "Some findings are described as chance or secondary results in the reviewed studies, so robustness and reproducibility vary across reports (nutrients_2023a, nutrients_2023a__body__005).",
+        "Histone modifications are listed as a main epigenetic signature, but this review emphasizes DNAm and miRNA examples more than intervention-specific histone data (nutrients_2023a, nutrients_2023a__body__000)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D09",
+      "query_type": "direct",
+      "query": "What minimum weekly physical activity threshold is associated with reduced mortality risk?",
+      "answer_preview": "The provided paper does not report a minimum weekly MVPA threshold. MVPA is reported in minutes per day, and the smallest daily MVPA differences associated with lower mortality in this study were about 1.6 min/day (combined SPAN) and 2 min/day (individual dose\u2013response). (stamatakis_2025, stamatakis",
+      "confidence": "high",
+      "no_evidence": true,
+      "num_citations": 3,
+      "citation_precision": 1.0,
+      "no_evidence_correct": false,
+      "faithful": true,
+      "faithfulness_note": "No-evidence response; nothing to verify.",
+      "caveats": [
+        "The study reports MVPA in minutes/day and does not present a weekly threshold, so a weekly equivalent cannot be determined from the provided text."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "D10",
+      "query_type": "direct",
+      "query": "What metabolic biomarkers improved with concurrent aerobic and resistance training in type 2 diabetes patients?",
+      "answer_preview": "The meta-analysis reported improvements in these metabolic biomarkers among T2DM patients after concurrent continuous aerobic plus short-rest resistance training: (1) HbA1c \u2014 reduced (diabetol_metab_2025, diabetol_metab_2025__results__000). (2) HOMA-IR \u2014 reduced (diabetol_metab_2025, diabetol_metab_",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 6,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll five outcome claims (reductions in HbA1c, HOMA\u2011IR, TG, TC and an increase in HDL\u2011C) are directly reported in the provided meta-analysis results and abstract (with corresponding effect sizes and p-values), so the answer is supported by the context.",
+      "caveats": [
+        "The cited review notes considerable between-study heterogeneity for some outcomes.",
+        "Intervention specifics (e.g., exact intensities, exercise order, and rest intervals) varied across included trials, which may affect generalizability."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "S01",
+      "query_type": "synthesis",
+      "query": "Compare the molecular aging biomarker frameworks in Moqri et al. (Cell 2023) versus Furrer & Handschin (Physiol Rev 2025) \u2014 where do they agree and disagree?",
+      "answer_preview": "Summary \u2014 agreements\nBoth papers emphasize that molecular aging biomarkers require rigorous validation, that mechanistic grounding and generalizability are important, and that integrative/multisystem measures are preferable to isolated, purely data\u2011driven features. Both also stress caution about ext",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 12,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately summarizes points and contrasts that are supported by the provided passages (validation/standardization, mechanistic/generalizability criteria, caution about data\u2011driven models, emphasis on physiological benchmarks, and proteomic clock status) and does not introduce unsupported substantive claims beyond what the excerpts show.",
+      "caveats": [
+        "Comparison limited to the provided excerpts from the two papers; other sections of each paper may contain additional nuances not represented here."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "S02",
+      "query_type": "synthesis",
+      "query": "How do caloric restriction, intermittent fasting, and fasting-mimicking diets compare in their mechanisms and evidence for longevity benefits?",
+      "answer_preview": "Summary \u2014 mechanisms\n\n- Caloric restriction (CR): In model systems CR downregulates nutrient-sensing growth pathways and activates low-energy sensors: it reduces insulin/IGF and TOR signaling while activating AMPK and inhibiting mTORC1, which promotes autophagy and stress resistance (f1000_2016, f10",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 12,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll claims in the answer are supported by the provided passages: mechanisms and pathway effects of CR and IF are described in nutrients_2024 and f1000_2016, model-organism longevity evidence and CALERIE human findings are cited in f1000_2016, and caveats about translation, genetic/sex variability, and lack of clear human lifespan benefit are present in furrer_handschin_2025 and the other sources.",
+      "caveats": [
+        "Most longevity claims are from non-human models; human lifespan effects are not established (furrer_handschin_2025__results__014).",
+        "Responses depend on genetics, sex, diet composition, and timing; adverse effects (loss of lean mass, immune impairment) have been reported in some contexts (furrer_handschin_2025__results__014).",
+        "IF and FMD can reproduce many mechanistic effects of CR, but protocols and long-term human outcomes vary across studies (f1000_2016__conclusion__000; nutrients_2024__results__002).",
+        "Entity guard: removed 3 sentence(s) containing terms not found in context: ['DR/CR', 'FMD', 'IIS/TOR']"
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "S03",
+      "query_type": "synthesis",
+      "query": "Synthesize how exercise affects mitochondrial function across the corpus \u2014 what molecular pathways are shared across studies?",
+      "answer_preview": "Across the corpus the exercise-mediated effects on mitochondria converge on a consistent set of molecular pathways: activation of AMPK (including mitochondria-localized AMPK), induction of the PGC-1\u03b1 mitochondrial biogenesis program, engagement of autophagy/mitophagy and broader mitochondrial qualit",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 13,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll major claims in the answer are directly supported by the provided passages (e.g., mitochondria-localized AMPK and graded AMPK activation: cells_2022__body__024/023; PGC-1\u03b1 biogenesis: cells_2022__body__024 and mol_bio_rep_2025; mitophagy/Parkin and autophagy: cells_2022__body__025/026; respiratory complexes/supercomplexes and proteostasis/antioxidant changes: s2468867319_2019__introduction__003/004 and biology_2019__body__031).",
+      "caveats": [
+        "Responses are muscle-group- and age-dependent; markers and functional outcomes differ by muscle and by timing/duration of training (s2468867319_2019, s2468867319_2019__introduction__004).",
+        "Short-term remodeling during initiation of training can show different marker patterns than long-term endurance training, and age/timepoint selection affects observed preservation of function (s2468867319_2019, s2468867319_2019__introduction__003; s2468867319_2019, s2468867319_2019__introduction__005)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "S04",
+      "query_type": "synthesis",
+      "query": "What do the Stamatakis, Koemel, and NHANES studies collectively suggest about the optimal combination of sleep, physical activity, and nutrition for longevity?",
+      "answer_preview": "Across these reports, the consistent message is that a combination of moderate sleep, regular moderate-to-vigorous physical activity (MVPA), and higher diet quality\u2014rather than any single change alone\u2014is most strongly associated with longer life. Those authors also showed relatively small concurrent",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 6,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll specific numeric claims (\u224815 min sleep, \u22481.6\u20131.9 min MVPA, +5 DQS \u2192 ~10% lower mortality; and \u22485 min sleep, \u22481.9 min MVPA, +5 DQS \u2192 ~1 year lifespan) and the emphasis on synergistic effects are directly supported by the cited passages. No unsupported assertions or extrapolations beyond the provided context were made.",
+      "caveats": [
+        "The cited findings are observational and the authors note interpretations such as lifespan gains assume causal relationships in their models (stamatakis_2025, stamatakis_2025__discussion__001).",
+        "Entity guard: removed 2 sentence(s) containing terms not found in context: ['57.5\u201372.5', 'NHANES']"
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "S05",
+      "query_type": "synthesis",
+      "query": "Across the corpus, what methodological limitations are most commonly acknowledged in human longevity research?",
+      "answer_preview": "Across the provided corpus, the most commonly acknowledged methodological limitations in human longevity research are:\n\n- Limited translatability from model organisms to humans, driven by differences in lifespan, physiology, and laboratory conditions (e.g., housing, temperature, pathogen status) tha",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 16,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll listed limitations are explicitly discussed in the provided passages (e.g., translatability issues from model organisms, long human lifespan complicating trials, lack of consensus/validation for molecular clocks, small cohorts and technical noise, telomere assay variability, questionable observational records like Blue Zones, regulatory/ethical constraints, incomplete mechanistic understanding, and drug\u2013lifestyle interactions), so the answer accurately reflects the source content.",
+      "caveats": [
+        "Summary is limited to statements and examples present in the provided corpus (furrer_handschin_2025).",
+        "The corpus is a single comprehensive review; additional primary studies could provide further nuance not contained here."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "E01",
+      "query_type": "edge",
+      "query": "What does the corpus say about the effect of smoking cessation on longevity?",
+      "answer_preview": "The provided corpus does not report results or estimates specifically about the effect of smoking cessation (quitting) on longevity. The texts discuss smoking as a modifiable driver of premature mortality and note the need to study interactions between behaviours and smoking, but they do not provide",
+      "confidence": "low",
+      "no_evidence": true,
+      "num_citations": 2,
+      "citation_precision": 1.0,
+      "no_evidence_correct": false,
+      "faithful": true,
+      "faithfulness_note": "No-evidence response; nothing to verify.",
+      "caveats": [
+        "No chunk in the provided corpus presents data comparing current, former, and never smokers, or quantifies life-years gained after quitting.",
+        "No longitudinal analyses, hazard ratios for former smokers, or explicit statements about the magnitude or timing of longevity benefits after cessation are present in the supplied texts."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "E02",
+      "query_type": "edge",
+      "query": "Summarize the findings from Zhang et al. 2021 on ketogenic diets and aging.",
+      "answer_preview": "I cannot summarize Zhang et al. 2021 because the provided context does not include that paper or any excerpts from it. To summarize that study I need the paper text or specific excerpts (or the chunk id) from the materials you want me to use.",
+      "confidence": "low",
+      "no_evidence": true,
+      "num_citations": 0,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "No-evidence response; nothing to verify.",
+      "caveats": [
+        "The supplied chunks do discuss ketogenic diets generally (e.g., effects on lipids, weight, glucose/insulin and mTORC1) but none are attributed to Zhang et al. 2021; therefore I cannot attribute findings to that author/year without the explicit source text.",
+        "If you provide the Zhang et al. 2021 text or the specific chunk containing it, I will summarize it using only the provided content and include verbatim supporting quotes."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "E03",
+      "query_type": "edge",
+      "query": "According to Barry et al. 2014, what did the Methods section describe about how studies were selected for the meta-analysis?",
+      "answer_preview": "Barry et al. (2014) Methods reported that articles were quality-scored, that hazard ratios and 95% confidence intervals were collected for five CRF\u2013BMI comparison groups and pooled using a random-effects model because of heterogeneity, and that Begg and Egger tests were used to assess publication bi",
+      "confidence": "medium",
+      "no_evidence": false,
+      "num_citations": 8,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nAll statements are supported by the provided methods text: articles were quality-scored, hazard ratios and 95% CIs for the five comparison groups were collected and pooled using a random-effects model due to heterogeneity, and Begg and Egger tests were performed to assess publication bias.",
+      "caveats": [
+        "Entity guard: removed 2 sentence(s) containing terms not found in context: ['The Methods']"
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "E04",
+      "query_type": "edge",
+      "query": "Is there evidence that caloric restriction is harmful to longevity?",
+      "answer_preview": "Short answer: Yes \u2014 there is evidence, mainly from animal studies, that caloric restriction (CR) can be harmful to longevity in some contexts. Specifically, multiple sources report that some mouse strains show little benefit and that \u201csome even experience a negative, life-shortening effect,\u201d and tha",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 5,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately reflects the cited passages: animal studies (mice and some primate trials) show strain- and sex-dependent variability including life-shortening and adverse health effects from CR, and the reviews state there is no clear evidence for CR extending human longevity.",
+      "caveats": [
+        "Most direct evidence of harm comes from animal studies (mice, some primate trials); the human longevity effect is described as unclear in the provided texts.",
+        "Harmful or null outcomes are reported to depend on genetic background, sex, diet composition, and experimental controls (as noted in the cited sources).",
+        "Some human trials (e.g., CALERIE) report health benefits in selected subgroups but also report adverse effects (these details are discussed in the cited material)."
+      ],
+      "mode": "vector_only"
+    },
+    {
+      "query_id": "E05",
+      "query_type": "edge",
+      "query": "What pharmaceutical drugs does the corpus recommend for extending lifespan?",
+      "answer_preview": "The corpus does not recommend any pharmaceutical drug for extending human lifespan. It explicitly states that \u201cno evidence for efficacy (and safety) for the application of any of these pharmacological and interventional factors on the human aging process exists\u201d (furrer_handschin_2025, furrer_handsc",
+      "confidence": "high",
+      "no_evidence": false,
+      "num_citations": 8,
+      "citation_precision": 1.0,
+      "no_evidence_correct": true,
+      "faithful": true,
+      "faithfulness_note": "FAITHFUL\n\nThe answer accurately summarizes the cited review\u2019s conclusions (no current evidence/safety for anti\u2011aging drugs), lists compounds discussed in the text, and correctly reports the specific points about resveratrol, metformin, rapamycin, and telomerase therapy that are supported by the provided passages.",
+      "caveats": [
+        "The review explicitly concludes no pharmacological or interventional agent currently meets criteria of proven efficacy and safety for human aging (furrer_handschin_2025, furrer_handschin_2025__results__006).",
+        "Some candidates (e.g., rapamycin) show reproducible benefits in model organisms but lack human longevity trials (furrer_handschin_2025, furrer_handschin_2025__results__005; furrer_handschin_2025, furrer_handschin_2025__results__007).",
+        "Other interventions (e.g., telomerase therapy) carry theoretical and observed risks, including associations with cancer (furrer_handschin_2025, furrer_handschin_2025__results__015)."
+      ],
+      "mode": "vector_only"
+    }
+  ]
+}

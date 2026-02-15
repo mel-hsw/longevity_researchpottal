@@ -1,0 +1,301 @@
+{
+  "generated_at": "2026-02-15T23:22:57.338049+00:00",
+  "pipeline": "hybrid_bm25_faiss_reranked",
+  "num_queries": 6,
+  "results": [
+    {
+      "query_id": "D01",
+      "query_type": "direct",
+      "query": "What biomarkers did Brandhorst et al. use to measure biological age changes from the fasting-mimicking diet?",
+      "answer": "Brandhorst et al. used a clinical-chemistry based composite biological-age estimator composed of seven markers: albumin, alkaline phosphatase, serum creatinine, C-reactive protein (CRP), HbA1c, systolic blood pressure, and total cholesterol (brandhorst_2024, brandhorst_2024__results__006). Changes in biological age were associated particularly with changes in albumin, CRP, systolic blood pressure, and HbA1c (brandhorst_2024, brandhorst_2024__results__009).",
+      "citations": [
+        {
+          "source_id": "brandhorst_2024",
+          "chunk_id": "brandhorst_2024__results__006",
+          "relevant_quote": "here: albumin, alkaline phospha- tase, serum creatinine, C-reactive protein, Hba1c, systolic blood pres- sure, and total cholesterol"
+        },
+        {
+          "source_id": "brandhorst_2024",
+          "chunk_id": "brandhorst_2024__results__009",
+          "relevant_quote": "albumin (bicor = 0.37, p = 0.007), CRP (bicor = 0.63, p < 0.0001), systolic blood pressure (bicor = 0.64, p < 0.0001), and Hba1c (bicor = 0.35, p = 0.011)"
+        }
+      ],
+      "confidence": "high",
+      "evidence_quality": "high",
+      "no_evidence": false,
+      "caveats": [
+        "The study used these seven clinical markers combined into a single biological-age estimate; the context shows several of the individual markers (albumin, CRP, systolic blood pressure, HbA1c) had the strongest associations with the measured change."
+      ],
+      "retrieval_summary": {
+        "total_candidates": 18,
+        "above_threshold": 10,
+        "chunks_used": 10
+      }
+    },
+    {
+      "query_id": "D04",
+      "query_type": "direct",
+      "query": "According to Barry et al., does cardiorespiratory fitness or body fatness have a stronger effect on all-cause mortality?",
+      "answer": "Barry et al. conclude that cardiorespiratory fitness (CRF) has a stronger effect on all-cause mortality than body fatness (BMI) (barry_2014, barry_2014__discussion__000; barry_2014, barry_2014__discussion__001).",
+      "citations": [
+        {
+          "source_id": "barry_2014",
+          "chunk_id": "barry_2014__discussion__000",
+          "relevant_quote": "the risk of death was dependent upon CRF level and not BMI."
+        },
+        {
+          "source_id": "barry_2014",
+          "chunk_id": "barry_2014__discussion__001",
+          "relevant_quote": "unfit individuals have twice the risk of death regardless of BMI, while fit and overweight and obese individuals have similar mortality risk as their normal weight counterparts."
+        }
+      ],
+      "confidence": "high",
+      "evidence_quality": "direct statements from the article's discussion section (meta-analysis results)",
+      "no_evidence": false,
+      "caveats": [],
+      "retrieval_summary": {
+        "total_candidates": 16,
+        "above_threshold": 10,
+        "chunks_used": 8
+      }
+    },
+    {
+      "query_id": "S02",
+      "query_type": "synthesis",
+      "query": "How do caloric restriction, intermittent fasting, and fasting-mimicking diets compare in their mechanisms and evidence for longevity benefits?",
+      "answer": "CR lowers amino\u2011acid and insulin/IGF signals and activates AMPK (nutrients_2024, nutrients_2024__results__000), which together inhibit mTORC1 and promote autophagy (nutrients_2024, nutrients_2024__results__000).\nCR \u2014 evidence: Caloric restriction is described as \u201cthe most effective and reproducible dietary intervention\u201d for lifespan extension across model organisms (f1000_2016, f1000_2016__abstract__000). In humans, controlled trials show some cardiometabolic and inflammatory benefits (f1000_2016, f1000_2016__introduction__001), but aggregated recent reviews note that \u201cno clear evidence of longevity benefits of bona fide caloric restriction in humans currently exists\u201d (furrer_handschin_2025, furrer_handschin_2025__results__014).\n\nIntermittent and periodic fasting (IF) \u2014 mechanisms: IF imposes cyclic fasting/feeding that engages similar nutrient\u2011sensing pathways and stress responses; the periodic nature can produce pronounced improvements in insulin sensitivity and upregulate stress\u2011resilience pathways (nutrients_2024, nutrients_2024__results__001; nutrients_2024, nutrients_2024__results__002). The f1000 review notes that intermittent and periodic fasting can share biomarker changes with CR (f1000_2016, f1000_2016__introduction__002).\nHuman clinical studies reported short\u2011term improvements in body composition and cardiovascular markers and some longer\u2011term metabolic changes (nutrients_2024, nutrients_2024__results__001), but generalizability is complicated by heterogeneous study designs (nutrients_2024, nutrients_2024__results__002).\n\nOverall clinical evidence is promising but limited and not yet definitive for human lifespan extension (nutrients_2024, nutrients_2024__results__002).\n\ncyclical fasting vs. periodic low\u2011calorie, low\u2011protein mimetics) and thus in feasibility, side\u2011effect profiles, and likely tissue\u2011specific responses (f1000_2016, f1000_2016__introduction__000; nutrients_2024, nutrients_2024__results__001). Human data show metabolic and some healthspan benefits (f1000_2016, f1000_2016__introduction__001; nutrients_2024, nutrients_2024__results__001) but no clear, consistent demonstration that bona fide CR extends human lifespan, and heterogeneity of trials limits firm conclusions (furrer_handschin_2025, furrer_handschin_2025__results__014; nutrients_2024, nutrients_2024__results__002).",
+      "citations": [
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__000",
+          "relevant_quote": "down-regulation of insulin and insulin-like signalling (IIS), as well as of the amino signalling target of rapamycin (TOR)-S6 kinase pathway, and the glucose signalling Ras-protein kinase A (PKA) pathway"
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__000",
+          "relevant_quote": "CR also activates AMP-activated protein kinase (AMPK) due to lower ATP levels, which then inhibits mTORC1 directly by phosphorylating Raptor and indirectly by activating the tuberous sclerosis complex (TSC1/2)"
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__002",
+          "relevant_quote": "It highlights the contrast between high-energy and low-energy states and their respective influences on critical signaling pathways like mTORC1, AMPK, and insulin signaling"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__abstract__000",
+          "relevant_quote": "Caloric restriction is the most effective and reproducible dietary intervention known to regulate aging and increase the healthy lifespan in various model organisms"
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__001",
+          "relevant_quote": "Specifically, IF\u2019s cyclic fasting and feeding periods may lead to more pronounced improvements in insulin sensitivity due to the extended periods without food intake"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__002",
+          "relevant_quote": "Both intermittent and periodic fasting can increase lifespan, even when there is little or no overall decrease in calorie intake"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__003",
+          "relevant_quote": "A fasting-mimicking diet, consisting of very low calorie and protein that leads to similar physiological response to fasting, including reduced levels of glucose and IGF-1"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__001",
+          "relevant_quote": "a two year 25% caloric restriction is feasible for humans and provides health benefits, such as reduced inflammatory markers and cardiometabolic risk factors"
+        },
+        {
+          "source_id": "furrer_handschin_2025",
+          "chunk_id": "furrer_handschin_2025__results__014",
+          "relevant_quote": "no clear evidence of longevity benefits of bona fide caloric restriction in humans currently exists"
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__002",
+          "relevant_quote": "Variability in study designs, participant characteristics, and dietary protocols complicates the interpretation and generalizability of findings"
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__001",
+          "relevant_quote": "Intermittent fasting demonstrates short-term improvements in body composition, cardiovascular markers, and cardiovascular risk scores, while also showing long-term benefits such as enhanced cholesterol levels, modulation of thyroid function"
+        }
+      ],
+      "confidence": "medium",
+      "evidence_quality": "Strong and reproducible preclinical (model organisms) evidence for CR; supportive preclinical evidence for IF and FMD. Human clinical data show metabolic and some healthspan benefits but are heterogeneous and do not yet provide clear, consistent evidence of lifespan extension.",
+      "no_evidence": false,
+      "caveats": [
+        "Human evidence is mixed and limited; CR\u2019s longevity benefit in humans is not clearly demonstrated (furrer_handschin_2025, furrer_handschin_2025__results__014).",
+        "Trial heterogeneity (designs, populations, protocols) limits generalizability (nutrients_2024, nutrients_2024__results__002).",
+        "CR has feasible benefits but may have adverse effects (reduced bone mineral density) and variable effects by sex, genotype, and baseline diet (f1000_2016, f1000_2016__introduction__001; furrer_handschin_2025, furrer_handschin_2025__results__014).",
+        "Entity guard: removed 7 sentence(s) containing terms not found in context: ['AMPK/', 'FMD', 'IF/', 'IF/FMD', 'IIS/']"
+      ],
+      "retrieval_summary": {
+        "total_candidates": 14,
+        "above_threshold": 10,
+        "chunks_used": 10
+      }
+    },
+    {
+      "query_id": "S03",
+      "query_type": "synthesis",
+      "query": "Synthesize how exercise affects mitochondrial function across the corpus \u2014 what molecular pathways are shared across studies?",
+      "answer": "Across the provided corpus, exercise influences mitochondrial function through a small set of recurring, interlinked molecular pathways: (1) energy-sensing AMPK signaling that links energetic stress to mitochondrial remodeling (fission, mitophagy, and increased mitochondrial enzymes); (2) PGC-1\u03b1\u2013mediated mitochondrial biogenesis (often downstream of exercise-activated kinases); (3) coordinated autophagy/mitophagy and proteostatic mechanisms that remove damaged mitochondria and enable replacement; (4) regulation of mitochondrial dynamics (fission/fusion, including Drp1) that accompanies quality-control processes; and (5) upregulation of antioxidant and mitochondrial enzyme activity. Each pathway appears repeatedly in animal and human studies in the corpus and is described as interacting with the others (for example, AMPK phosphorylation of Ulk1 promotes mitophagy while mitophagy and biogenesis are tightly coupled). Specific supporting statements from the corpus are cited below.",
+      "citations": [
+        {
+          "source_id": "cells_2022",
+          "chunk_id": "cells_2022__body__035",
+          "relevant_quote": "Ampk phosphorylation of Ulk1 is required for targeting of mitochondria to lysosomes in exercise-induced mitophagy."
+        },
+        {
+          "source_id": "cells_2022",
+          "chunk_id": "cells_2022__body__024",
+          "relevant_quote": "Mitochondria-localized AMPK responds to local energetics and contributes to exercise and energetic stress-induced mitophagy."
+        },
+        {
+          "source_id": "cells_2022",
+          "chunk_id": "cells_2022__body__024",
+          "relevant_quote": "Exercise stimulates Pgc-1alpha transcription in skeletal muscle through activation of the p38 MAPK pathway."
+        },
+        {
+          "source_id": "ju_2016",
+          "chunk_id": "ju_2016__results__003",
+          "relevant_quote": "8-week swimming exercise training increases the basal autophagy flux and expression of the autophagy/mitophagy-related genes in mouse skeletal muscle."
+        },
+        {
+          "source_id": "ju_2016",
+          "chunk_id": "ju_2016__results__003",
+          "relevant_quote": "mitophagy and mitochondrial biogenesis are tightly coupled"
+        },
+        {
+          "source_id": "ju_2016",
+          "chunk_id": "ju_2016__results__003",
+          "relevant_quote": "These transgenic mice showed accumulated protein aggregates, abnormal mitochondria, and decreased mitochondrial function in skeletal muscle."
+        },
+        {
+          "source_id": "cells_2022",
+          "chunk_id": "cells_2022__body__035",
+          "relevant_quote": "The impact of exercise on mitochondrial dynamics and the role of Drp1 in exercise performance and training adaptations in skeletal muscle."
+        },
+        {
+          "source_id": "biology_2019",
+          "chunk_id": "biology_2019__body__031",
+          "relevant_quote": "Resistance exercise training decreases oxidative damage to DNA and increases cytochrome oxidase activity in older adults."
+        },
+        {
+          "source_id": "s2468867319_2019",
+          "chunk_id": "s2468867319_2019__introduction__003",
+          "relevant_quote": "Endurance exercise is currently one of the most robust interventions for promoting proteostatic mechanisms"
+        },
+        {
+          "source_id": "s2468867319_2019",
+          "chunk_id": "s2468867319_2019__introduction__004",
+          "relevant_quote": "There were distinct patterns in markers of mitochondria proteostasis that indicated remodeling of mitochondria during the four months of a new exercise training program"
+        },
+        {
+          "source_id": "cells_2022",
+          "chunk_id": "cells_2022__body__024",
+          "relevant_quote": "Exercise reestablishes autophagic flux and mitochondrial quality control in heart failure."
+        }
+      ],
+      "confidence": "high",
+      "evidence_quality": "High \u2014 multiple reviews and primary studies in the corpus (animal and human) report consistent, mechanistic findings and overlapping pathways.",
+      "no_evidence": false,
+      "caveats": [
+        "The corpus includes both animal and human studies and notes heterogeneity by muscle group and study duration (e.g., different muscles show different age-related outcomes; remodeling over a four-month training program was observed) (s2468867319_2019, s2468867319_2019__introduction__003; s2468867319_2019, s2468867319_2019__introduction__004).",
+        "Effect sizes, detailed time courses, and tissue-specific quantitative magnitudes are not consistently reported across the provided excerpts, so this synthesis focuses on recurring mechanistic themes rather than precise quantitative effects."
+      ],
+      "retrieval_summary": {
+        "total_candidates": 20,
+        "above_threshold": 10,
+        "chunks_used": 10
+      }
+    },
+    {
+      "query_id": "E02",
+      "query_type": "edge",
+      "query": "Summarize the findings from Zhang et al. 2021 on ketogenic diets and aging.",
+      "answer": "I cannot summarize Zhang et al. 2021 because that specific paper is not included in the provided context. Please supply the Zhang et al. 2021 text or indicate which chunk contains it and I will summarize it. Meanwhile, below is what the provided context (Nutrients 2024) reports about ketogenic diets and aging-related outcomes and mechanisms.\n\nSummary of ketogenic-diet findings in the provided context:\n- Clinical/metabolic effects: The ketogenic diet is reported to be associated with reductions in triglycerides, increased HDL cholesterol, and substantial weight loss, but also with higher LDL cholesterol which could pose a cardiovascular risk for some individuals (nutrients_2024, nutrients_2024__results__001).\n- Mechanistic effects relevant to aging: Low carbohydrate intake reduces glucose and insulin levels, which \"directly decreases mTORC1 activity\"; inhibition of mTORC1 \"promotes autophagy and may help in cellular detoxification and longevity,\" linking ketogenic effects to pathways also implicated in caloric restriction and intermittent fasting (nutrients_2024, nutrients_2024__results__001).\n\nIf you want a direct summary of Zhang et al. 2021, please provide the paper or the relevant excerpt.",
+      "citations": [
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__001",
+          "relevant_quote": "The ketogenic diet is associated with significant reductions in triglyceride levels, increased HDL cholesterol, and substantial weight loss, albeit with higher LDL cholesterol levels."
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__001",
+          "relevant_quote": "reduction in glucose and insulin levels due to low carbohydrate intake directly decreases mTORC1 activity, typically stimulated by insulin and amino acids."
+        },
+        {
+          "source_id": "nutrients_2024",
+          "chunk_id": "nutrients_2024__results__001",
+          "relevant_quote": "This inhibition promotes autophagy and may help in cellular detoxification and longevity, akin to the mechanisms activated by CR and IF"
+        }
+      ],
+      "confidence": "low",
+      "evidence_quality": "limited (statements drawn from a review; no primary Zhang et al. 2021 text provided)",
+      "no_evidence": true,
+      "caveats": [
+        "The provided context does not include Zhang et al. 2021 or a direct citation to that paper, so I cannot summarize that specific study.",
+        "The summary above reflects only what is in the supplied Nutrients 2024 review chunk, not Zhang et al. 2021 itself."
+      ],
+      "retrieval_summary": {
+        "total_candidates": 17,
+        "above_threshold": 9,
+        "chunks_used": 10
+      }
+    },
+    {
+      "query_id": "E04",
+      "query_type": "edge",
+      "query": "Is there evidence that caloric restriction is harmful to longevity?",
+      "answer": "Short answer: No \u2014 the provided context contains no direct evidence that caloric restriction (CR) is harmful to longevity (i.e., that it shortens lifespan). Across model organisms CR is described as extending healthspan and/or lifespan, though results are mixed in primates and CR can have adverse health effects in humans.\n\nEvidence and nuances from the context:\n- The review states that CR \"is the most effective and reproducible dietary intervention known to regulate aging and increase the healthy lifespan in various model organisms\" (f1000_2016, f1000_2016__abstract__000). (f1000_2016, f1000_2016__abstract__000)\n- The same source also notes that \"Caloric restriction... is a severe intervention that results in both beneficial and detrimental effects,\" indicating CR can have adverse consequences even while generally beneficial for lifespan (f1000_2016, f1000_2016__abstract__000). (f1000_2016, f1000_2016__abstract__000)\n- In primates the findings are mixed: \"The NIA reported no improvement in lifespan but observed a positive trend for the delay of age-related diseases,\" while \"WNPRC reported significant improvement in both lifespan and healthspan,\" showing studies differ in outcomes for longevity in rhesus monkeys (f1000_2016, f1000_2016__introduction__001). (f1000_2016, f1000_2016__introduction__001)\n- In humans, the CALERIE trial found that a two-year 25% CR was feasible and produced health benefits, but also reported that \"caloric restriction was associated with reduced bone mineral density and exercise was recommended to offset such adverse effects\" (f1000_2016, f1000_2016__introduction__001). (f1000_2016, f1000_2016__introduction__001)\n- Genetic background can alter the response to CR: \"The long-lived GH receptor knock-out (GHRKO) mice... do not exhibit further lifespan extension or health benefits by caloric restriction... but the long-lived GH-deficient Ames mice do,\" indicating CR does not universally extend lifespan across genotypes (f1000_2016, f1000_2016__introduction__001). (f1000_2016, f1000_2016__introduction__001)\n\nOverall interpretation based on the provided context: the literature cited here does not report CR causing shorter lifespan; rather, CR generally extends lifespan in many models, but effects can vary by species, study, and genotype, and CR can produce adverse health effects (for example reduced bone mineral density in humans).",
+      "citations": [
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__abstract__000",
+          "relevant_quote": "Caloric restriction is the most effective and reproducible dietary intervention known to regulate aging and increase the healthy lifespan in various model organisms"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__abstract__000",
+          "relevant_quote": "Caloric restriction... is a severe intervention that results in both beneficial and detrimental effects"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__001",
+          "relevant_quote": "The NIA reported no improvement in lifespan but observed a positive trend for the delay of age-related diseases"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__001",
+          "relevant_quote": "whereas WNPRC reported significant improvement in both lifespan and healthspan"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__001",
+          "relevant_quote": "CALERIE... reported that a two year 25% caloric restriction is feasible for humans and provides health benefits... However, caloric restriction was associated with reduced bone mineral density"
+        },
+        {
+          "source_id": "f1000_2016",
+          "chunk_id": "f1000_2016__introduction__001",
+          "relevant_quote": "The long-lived GH receptor knock-out (GHRKO) mice... do not exhibit further lifespan extension or health benefits by caloric restriction... but the long-lived GH-deficient Ames mice do"
+        }
+      ],
+      "confidence": "high",
+      "evidence_quality": "mixed: strong, consistent evidence of lifespan extension in many model organisms; mixed/variable evidence in primates and some adverse effects reported in humans",
+      "no_evidence": false,
+      "caveats": [
+        "No chunk in the provided context reports CR shortening lifespan; some studies show no lifespan benefit (NIA rhesus study) rather than a lifespan decrease.",
+        "Adverse effects (for example, reduced bone mineral density in CALERIE) are reported and should be considered even if longevity is not reduced.",
+        "Genetic background and study differences can alter CR outcomes (e.g., GHRKO versus Ames mice; different primate study results)."
+      ],
+      "retrieval_summary": {
+        "total_candidates": 15,
+        "above_threshold": 10,
+        "chunks_used": 9
+      }
+    }
+  ]
+}
