@@ -1,16 +1,19 @@
 PYTHON = python3
 export KMP_DUPLICATE_LIB_OK=TRUE
 
-.PHONY: setup manifest ingest query eval outputs clean
+.PHONY: setup manifest ingest query eval outputs portal clean
 
 setup:
 	pip install -r requirements.txt
-	mkdir -p data/raw data/processed logs reports outputs
+	mkdir -p data/raw data/processed logs reports outputs outputs/threads outputs/artifacts
 	@if [ ! -f data/raw/Barry2014.pdf ] && [ -d ../Paper ]; then \
 		echo "Copying PDFs from ../Paper/ to data/raw/..."; \
 		cp ../Paper/*.pdf data/raw/; \
 	fi
 	@echo "Setup complete.  Add your OPENAI_API_KEY to .env"
+
+portal:
+	streamlit run src/app/main.py
 
 manifest:
 	$(PYTHON) -m src.ingest.build_manifest

@@ -1,24 +1,68 @@
-# Phase 2 — Research-Grade RAG: Exercise & Nutrition for Longevity
+# Personal Research Portal — Exercise & Nutrition for Longevity
 
-Personal Research Portal (PRP) — Phase 2 deliverable for CMU AI Model Dev course.
+Personal Research Portal (PRP) — Phase 3 deliverable for CMU AI Model Dev course.
+Phases 1 → 2 → 3: Prompting → RAG → Research Portal Product.
 
 ## Quick Start (< 5 minutes)
 
 ```bash
-# 1. Install dependencies
+# 1. Install dependencies (includes Streamlit + fpdf2 for Phase 3)
 make setup
 
 # 2. Add your OpenAI API key
 echo "OPENAI_API_KEY=sk-..." > .env
 
-# 3. Run ingestion (parse PDFs, chunk, embed, index)
+# 3. Run ingestion (parse PDFs, chunk, embed, index) — only needed once
 make ingest
 
-# 4. Ask a question
+# 4. Launch the research portal UI
+make portal
+
+# --- or use the CLI ---
+# Ask a single question
 make query QUERY="What is the effect of exercise on longevity?"
 
-# 5. Run full evaluation (20 queries, hybrid vs vector-only)
+# Run full evaluation (20 queries, hybrid vs vector-only)
 make eval
+```
+
+## Phase 3 — Research Portal Features
+
+| Feature | Location | Description |
+|---------|----------|-------------|
+| **Search / Ask** | Tab 1 | Enter a research question → grounded answer with inline citations |
+| **Save threads** | Tab 1 | Persist query + chunks + answer to `outputs/threads/` |
+| **History** | Tab 2 | Browse all saved research threads with full citation detail |
+| **Evidence Table** | Tab 3 | Structured artifact: Claim \| Evidence \| Citation \| Confidence \| Notes |
+| **Export** | Tab 3 | Download evidence tables as Markdown, CSV, or PDF |
+| **Evaluation dashboard** | Tab 4 | Metrics summary + per-query faithfulness and citation precision |
+| **Trust behavior** | All tabs | Missing evidence flagged explicitly + suggested next retrieval steps |
+
+### Artifact schema (evidence table)
+
+| Column | Source | Description |
+|--------|--------|-------------|
+| Claim | Answer sentence | The factual claim extracted from the answer |
+| Evidence snippet | `Citation.relevant_quote` | Verbatim text (≤40 words) from the source chunk |
+| Citation | `(source_id, chunk_id)` | Maps to `data_manifest.csv` and `data/processed/chunks.jsonl` |
+| Confidence | `RAGResponse.confidence` | high / medium / low |
+| Notes | `RAGResponse.caveats` | Caveats and guardrail warnings |
+
+### Repo structure (Phase 3 additions)
+
+```
+src/
+  app/
+    __init__.py
+    main.py          Streamlit portal (4 tabs)
+    threads.py       Thread save / load / list
+    artifacts.py     Evidence table builder
+    export.py        Markdown / CSV / PDF export
+outputs/
+  threads/           Saved research threads (JSON)
+  artifacts/         Exported evidence tables (MD, CSV)
+reports/
+  phase3_report.md   Final Phase 3 report (6–10 pages)
 ```
 
 ## Architecture

@@ -1,0 +1,10 @@
+# Evidence Table
+
+**Query:** Is there evidence that caloric restriction is harmful to longevity?
+**Overall confidence:** high
+**Generated:** 2026-02-18 05:15 UTC
+
+| # | Claim | Evidence Snippet | Citation | Confidence | Notes |
+|---|-------|-----------------|----------|------------|-------|
+| 1 | The review states that CR "is the most effective and reproducible dietary intervention known to regulate aging and increase the healthy lifespan in various model organisms" | Caloric restriction... is a severe intervention that results in both beneficial and detrimental effects | (f1000_2016, f1000_2016__abstract__000) | high | No chunk in the provided context reports CR shortening lifespan; some studies show no lifespan benefit (NIA rhesus study) rather than a lifespan decrease.; Adverse effects (for example, reduced bone mineral density in CALERIE) are reported and should be considered even if longevity is not reduced.; Genetic background and study differences can alter CR outcomes (e.g., GHRKO versus Ames mice; different primate study results). |
+| 2 | In primates the findings are mixed: "The NIA reported no improvement in lifespan but observed a positive trend for the delay of age-related diseases," while "WNPRC reported significant improvement in both lifespan and healthspan," showing studies differ in outcomes for longevity in rhesus monkeys | The long-lived GH receptor knock-out (GHRKO) mice... do not exhibit further lifespan extension or health benefits by caloric restriction... but the long-lived GH-deficient Ames mice do | (f1000_2016, f1000_2016__introduction__001) | high | No chunk in the provided context reports CR shortening lifespan; some studies show no lifespan benefit (NIA rhesus study) rather than a lifespan decrease.; Adverse effects (for example, reduced bone mineral density in CALERIE) are reported and should be considered even if longevity is not reduced.; Genetic background and study differences can alter CR outcomes (e.g., GHRKO versus Ames mice; different primate study results). |
