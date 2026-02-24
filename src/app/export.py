@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import io
 import textwrap
+import unicodedata
 from datetime import datetime, timezone
 
 from src.app.artifacts import EvidenceTable
@@ -99,6 +100,23 @@ def evidence_table_to_csv_bytes(table: EvidenceTable) -> bytes:
 
 # ── PDF ───────────────────────────────────────────────────────────────────────
 
+_UNICODE_MAP = {
+    "\u2018": "'", "\u2019": "'",    # curly single quotes
+    "\u201c": '"', "\u201d": '"',    # curly double quotes
+    "\u2013": "-", "\u2014": "--",   # en-dash, em-dash
+    "\u2026": "...",                 # ellipsis
+    "\u00b7": "*",                   # middle dot
+    "\u2022": "*",                   # bullet
+}
+
+def _pdf_safe(text: str) -> str:
+    """Replace common Unicode chars with Latin-1-safe equivalents for Helvetica."""
+    for src, dst in _UNICODE_MAP.items():
+        text = text.replace(src, dst)
+    # Normalize decomposed forms, then drop anything still outside Latin-1
+    text = unicodedata.normalize("NFKD", text)
+    return text.encode("latin-1", errors="replace").decode("latin-1")
+
 def evidence_table_to_pdf_bytes(table: EvidenceTable) -> bytes:
     """Render an EvidenceTable as a PDF (requires fpdf2)."""
     try:
@@ -122,7 +140,7 @@ def evidence_table_to_pdf_bytes(table: EvidenceTable) -> bytes:
     pdf.set_font("Helvetica", "", 10)
     # Wrap long query
     wrapped_query = textwrap.shorten(table.query, width=100, placeholder="...")
-    pdf.multi_cell(0, 6, f"Query: {wrapped_query}")
+    pdf.multi_cell(0, 6, _pdf_safe(f"Query: {wrapped_query}"))
     pdf.cell(0, 6, f"Confidence: {table.overall_confidence}", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, f"Generated: {now}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(4)
@@ -187,7 +205,7 @@ def evidence_table_to_pdf_bytes(table: EvidenceTable) -> bytes:
         ]
         for text, w in cells:
             pdf.set_xy(x, y)
-            pdf.multi_cell(w, row_h, text or "", border=1, max_line_height=row_h)
+            pdf.multi_cell(w, row_h, _pdf_safe(text or ""), border=1, max_line_height=row_h)
             x += w
 
         pdf.set_xy(x_start, y + cell_h)

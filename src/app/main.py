@@ -11,6 +11,7 @@ Tabs
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -48,6 +49,38 @@ def _pipeline_ready() -> bool:
     from src.config import Config
     cfg = Config()
     return (cfg.faiss_index_dir / "index.faiss").exists()
+
+
+@st.cache_data(show_spinner=False)
+def _load_chunk_index() -> dict[str, dict]:
+    """Load chunks.jsonl into a dict keyed by chunk_id (cached for the session)."""
+    from src.config import Config
+    path = Config().chunks_path
+    if not path.exists():
+        return {}
+    index: dict[str, dict] = {}
+    with path.open() as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                obj = json.loads(line)
+                index[obj["chunk_id"]] = obj
+    return index
+
+
+@st.cache_data(show_spinner=False)
+def _load_manifest() -> dict[str, dict]:
+    """Load data_manifest.csv into a dict keyed by source_id (cached for the session)."""
+    import csv as _csv
+    from src.config import Config
+    path = Config().manifest_path
+    if not path.exists():
+        return {}
+    manifest: dict[str, dict] = {}
+    with path.open(newline="") as f:
+        for row in _csv.DictReader(f):
+            manifest[row["source_id"]] = row
+    return manifest
 
 
 # ── Helper: render a single RAGResponse ──────────────────────────────────────
@@ -214,6 +247,90 @@ def _tab_history() -> None:
             )
 
 
+# ── Citation Inspector ────────────────────────────────────────────────────────
+
+_CITATION_RE = re.compile(r'\(\s*([^,)]+),\s*([^)]+)\s*\)')
+
+
+def _render_citation_inspector(table) -> None:
+    """Render expandable detail cards for each evidence row's citation."""
+    chunk_index = _load_chunk_index()
+    manifest = _load_manifest()
+
+    st.markdown("### Citation Inspector")
+
+    if not chunk_index:
+        st.info(
+            "Chunk index not available — run `make ingest` to enable full citation lookup."
+        )
+        return
+
+    for i, row in enumerate(table.rows, 1):
+        m = _CITATION_RE.match(row.citation)
+        if not m:
+            continue
+        source_id = m.group(1).strip()
+        chunk_id = m.group(2).strip()
+
+        with st.expander(f"**{i}.** `{row.citation}`"):
+            # ── Document metadata ────────────────────────────────────────────
+            doc = manifest.get(source_id, {})
+            if doc:
+                title = doc.get("title") or source_id
+                authors = doc.get("authors", "")
+                year = doc.get("year", "")
+                venue = doc.get("venue", "")
+                doi = doc.get("url_or_doi", "")
+                st.markdown(f"**{title}**")
+                meta_parts = []
+                if authors:
+                    meta_parts.append(authors)
+                if year:
+                    meta_parts.append(f"({year})")
+                if venue:
+                    meta_parts.append(f"— {venue}")
+                if meta_parts:
+                    st.markdown(" ".join(meta_parts))
+                if doi:
+                    st.markdown(f"DOI / URL: `{doi}`")
+            else:
+                st.markdown(f"**Source:** `{source_id}`")
+
+            st.divider()
+
+            # ── Chunk location ───────────────────────────────────────────────
+            chunk = chunk_index.get(chunk_id, {})
+            if chunk:
+                section = chunk.get("section", "")
+                p_start = chunk.get("page_start", "?")
+                p_end = chunk.get("page_end", "?")
+                st.markdown(
+                    f"**Section:** {section} &nbsp;|&nbsp; **Pages:** {p_start}–{p_end}"
+                )
+            else:
+                st.warning(f"Chunk `{chunk_id}` not found in index.")
+
+            # ── Relevant quote ───────────────────────────────────────────────
+            if row.evidence_snippet:
+                st.markdown("**Relevant quote**")
+                st.info(f""{row.evidence_snippet}"")
+
+            # ── Full chunk text ──────────────────────────────────────────────
+            if chunk:
+                raw = chunk.get("text_raw") or chunk.get("text", "")
+                # Strip metadata prefix line added during ingestion
+                if raw.startswith("[Source:"):
+                    raw = raw.split("\n", 1)[-1].strip()
+                st.markdown("**Full chunk text**")
+                st.text(raw)
+
+            st.divider()
+
+            # ── Claim ────────────────────────────────────────────────────────
+            st.markdown("**Claim in answer**")
+            st.markdown(f"> {row.claim}")
+
+
 # ── Tab 3: Artifacts ──────────────────────────────────────────────────────────
 
 def _tab_artifacts() -> None:
@@ -287,6 +404,8 @@ def _tab_artifacts() -> None:
     st.dataframe(df, use_container_width=True, height=350)
 
     st.markdown(f"**{len(table.rows)} row(s)** | Overall confidence: **{table.overall_confidence}**")
+
+    _render_citation_inspector(table)
 
     # Export buttons
     st.markdown("### Export")
