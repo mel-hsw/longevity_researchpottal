@@ -178,8 +178,8 @@ def _tab_search() -> None:
         if col_save.button("💾 Save thread", use_container_width=True):
             if retrieval is not None:
                 from src.app.threads import save_thread
-                path = save_thread(current_query, retrieval, response)
-                st.success(f"Thread saved → `{path.name}`")
+                save_thread(current_query, retrieval, response)
+                st.rerun()
             else:
                 st.warning("No retrieval result to save.")
 
@@ -313,7 +313,7 @@ def _render_citation_inspector(table) -> None:
             # ── Relevant quote ───────────────────────────────────────────────
             if row.evidence_snippet:
                 st.markdown("**Relevant quote**")
-                st.info(f""{row.evidence_snippet}"")
+                st.info(f"\u201c{row.evidence_snippet}\u201d")
 
             # ── Full chunk text ──────────────────────────────────────────────
             if chunk:

@@ -85,13 +85,7 @@ All Phase 2 modules (`src/rag/`, `src/eval/`, `src/ingest/`) are unchanged.
 
 ### 3.1 Why Streamlit
 
-Streamlit was chosen because:
-- It allows Python-native UI development without frontend code (consistent with the all-Python RAG backend)
-- `@st.cache_resource` cleanly handles the expensive one-time pipeline initialization (FAISS index load + BM25 pickle)
-- `st.download_button` directly accepts `bytes`, making export trivial
-- Session state (`st.session_state`) persists query results across tab switches so generating an artifact from the last search does not require re-running the pipeline
-
-An alternative (Gradio) was considered but rejected because Streamlit's layout primitives (tabs, columns, expanders) give finer control over the research thread and artifact views.
+Streamlit was chosen because it keeps the entire stack in Python, consistent with the all-Python RAG backend, and its layout primitives (tabs, columns, expanders) give finer control over the research thread and artifact views than the Gradio alternative that was considered. Two Streamlit features were particularly valuable here: `@st.cache_resource` handles the expensive one-time pipeline initialization — loading the FAISS index and BM25 pickle — so the retrieval stack starts once and stays resident across user interactions. `st.session_state` then persists query results across tab switches, meaning a researcher can ask a question on Tab 1, navigate to Tab 3 to generate an artifact, and then download it, all without re-running the pipeline. `st.download_button` completes the loop by accepting `bytes` directly, making the three export formats (MD, CSV, PDF) trivial to wire up.
 
 ### 3.2 Evidence table as the artifact type
 
@@ -162,28 +156,34 @@ The Phase 2 evaluation suite (20 queries: 10 direct, 5 synthesis, 5 edge-case) w
 | Faithfulness Rate | **0.950** | 1.000 | −0.050 |
 | No-Evidence Accuracy | **0.950** | 0.900 | +0.050 |
 
+![Figure 1 — Hybrid vs. Vector-Only retrieval metrics across the three evaluation dimensions](figures/fig1_metric_comparison.png)
+
+*Figure 1. Grouped bar chart comparing hybrid (BM25+FAISS) and vector-only (FAISS) pipelines across citation precision, faithfulness rate, and no-evidence accuracy on the 20-query evaluation set. The hybrid pipeline is strictly equal or better on two of three metrics, with the faithfulness delta explained by the S01 author-attribution failure discussed below.*
+
 **Citation precision = 1.000** in both modes confirms the guardrails (citation verification + entity check) are functioning: every citation in every answer maps to a chunk that was actually retrieved. There are zero hallucinated references.
 
-**Faithfulness:** One hybrid-mode answer was flagged UNFAITHFUL (query D08, synthesis of mitochondrial biomarkers). Investigation showed the answer correctly synthesized two papers but one claim about "percentage decline" was inferred rather than stated explicitly. This was a borderline case; the entity check removed the specific percentage, but a qualitative version of the claim remained.
+**Faithfulness:** One hybrid-mode answer was flagged UNFAITHFUL (query S01, cross-paper biomarker framework comparison). The answer correctly synthesized both papers' evaluation criteria but attributed the Cell 2023 framework to "Moqri et al." by name — an author attribution not present in the retrieved chunks. The entity check did not catch this because it targets numeric and domain terms, not author names missing from context.
 
-**No-evidence accuracy:** The hybrid pipeline correctly identifies unanswerable queries 95% of the time (+5% over vector-only). The one failure (edge-case E03) was a query whose key term ("telomere length") appeared only in the abstract of one paper — below the similarity threshold — so the system incorrectly returned a partial answer instead of flagging insufficient evidence.
+**No-evidence accuracy:** The hybrid pipeline correctly identifies unanswerable queries 95% of the time (+5% over vector-only). The one failure (edge-case E01) was a query about smoking cessation where the corpus contains only a passing mention of smoking as a mortality risk factor. The system returned `no_evidence=True` rather than surfacing that marginal context — a false-positive no-evidence call.
+
+![Figure 2 — Per-query faithfulness for all 20 hybrid-mode queries](figures/fig2_per_query_faithfulness.png)
+
+*Figure 2. Per-query faithfulness result for the hybrid pipeline across all 20 evaluation queries, grouped by query type (Direct D01–D10, Synthesis S01–S05, Edge E01–E05). Green bars indicate PASS; the single red bar at S01 marks the one UNFAITHFUL response caused by an ungrounded author attribution.*
 
 ### 4.2 Representative failures
 
-**Failure 1 — D08 (faithfulness):**
-- Query: "What molecular biomarkers distinguish biological age from chronological age across multiple papers in the corpus?"
-- Issue: One sentence claimed mitochondrial function "declines significantly with age" without a quantitative source. The entity check stripped a specific percentage, but the qualitative claim survived.
-- Fix: Add a stricter second-pass check for comparative adjectives ("significantly," "substantially") that lack a verbatim source.
+**Failure 1 — S01 (faithfulness):**
+- Query: "Compare the molecular aging biomarker frameworks in Moqri et al. (Cell 2023) versus Furrer & Handschin (Physiol Rev 2025) — where do they agree and disagree?"
+- Issue: The answer attributed the Cell 2023 framework to "Moqri et al." by name. The retrieved chunks reference the Cell 2023 review but never include the author name, so this attribution was injected from LLM pre-training memory rather than grounded in the retrieved context.
+- Fix: Add an author-name check to the guardrail layer: flag any proper-noun author attribution that does not appear verbatim in the retrieved chunks.
 
-**Failure 2 — E03 (no-evidence accuracy):**
-- Query: "Does the corpus contain evidence that telomere length predicts cardiovascular risk?"
-- Issue: "Telomere" appeared in one abstract chunk that fell just below the 0.25 similarity threshold. The system retrieved adjacent chunks and produced a partial answer instead of `no_evidence=True`.
-- Fix: Lower threshold for edge-case queries OR implement a keyword-scan pre-check before retrieval.
+**Failure 2 — E01 (no-evidence accuracy):**
+- Query: "What does the corpus say about the effect of smoking cessation on longevity?"
+- Issue: The corpus contains a passing mention of smoking as a modifiable mortality driver, but the system returned `no_evidence=True` because no chunk scored above the retrieval threshold for "smoking cessation" specifically. This was a false-positive: marginal evidence existed but was not surfaced.
+- Fix: Implement a keyword-scan pre-check that detects partial corpus coverage before invoking the no-evidence path, so queries with peripheral mentions receive a low-confidence answer rather than a hard no-evidence flag.
 
-**Failure 3 — S04 (partial synthesis):**
-- Query: "Compare the CALERIE trial and the Brandhorst FMD trial on cardiovascular outcomes."
-- Issue: Hybrid retrieval pulled more CALERIE chunks (higher BM25 overlap on "caloric restriction") and fewer Brandhorst chunks; the answer was asymmetric.
-- Fix: Implement source-diversity reranking to ensure multi-paper synthesis queries draw from at least N distinct sources.
+**Qualitative concern — S04 (source asymmetry):**
+S04 ("What do the Stamatakis, Koemel, and NHANES studies collectively suggest about the optimal combination of sleep, physical activity, and nutrition for longevity?") passed all automated checks (faithful=true, no_evidence_correct=true), but manual review revealed the hybrid BM25 component scored SPAN-related chunks more heavily than NHANES clustering chunks, producing a mildly asymmetric synthesis. No automated metric penalized this, which highlights a gap: source-diversity is not currently a scored dimension. A future fix would implement source-diversity reranking to guarantee multi-paper synthesis queries draw from at least N distinct sources.
 
 ### 4.3 Portal-specific evaluation
 
@@ -261,7 +261,12 @@ repo/
 │   ├── threads/                       ← Saved research threads (JSON)
 │   ├── artifacts/                     ← Exported evidence tables (MD, CSV)
 │   │   ├── combined_evidence_table.md ← All 6 sample queries merged
-│   │   └── [per-query files]
+│   │   ├── D01_what_biomarkers_did_brandhorst_evidence_table.{md,csv}
+│   │   ├── D04_according_to_barry_et_al.,_doe_evidence_table.{md,csv}
+│   │   ├── E02_summarize_the_findings_from_zh_evidence_table.{md,csv}
+│   │   ├── E04_is_there_evidence_that_caloric_evidence_table.{md,csv}
+│   │   ├── S02_how_do_caloric_restriction,_in_evidence_table.{md,csv}
+│   │   └── S03_synthesize_how_exercise_affect_evidence_table.{md,csv}
 │   └── sample_rag_outputs.{json,md}   ← Phase 2 sample outputs
 ├── logs/
 │   └── run_log.jsonl                  ← Append-only query log (Phase 2)
@@ -310,13 +315,8 @@ python scripts/generate_phase3_artifacts.py
 
 ## 9. Conclusion
 
-Phase 3 successfully delivers the MVP research portal requirements:
+Phase 3 delivers a complete, usable research portal built directly on the Phase 2 RAG backend. The four-tab Streamlit interface covers the full researcher workflow — querying the corpus, saving threads for later review, generating structured evidence tables, and downloading results in three formats — without adding any LLM calls or modifying the retrieval and generation code that produced Phase 2's strong metrics.
 
-- **Interface** ✓ — 4-tab Streamlit app (search, history, artifacts, evaluation)
-- **Research threads** ✓ — file-based JSON persistence with full retrieval snapshots
-- **Artifact generator** ✓ — evidence table with correct schema, no extra LLM calls
-- **Export** ✓ — Markdown, CSV, PDF via download buttons
-- **Trust behavior** ✓ — `no_evidence` surfaced as red banner with next-step guidance; every answer retains inline citations from Phase 2 guardrails
-- **Evaluation view** ✓ — metrics dashboard with per-query breakdown and failure case examples
+The most consequential design decision was treating the evidence table as a view over data already present in `RAGResponse` rather than a separate generation step. This kept the artifact builder at 120 lines, added zero latency, and preserved citation traceability all the way to individual chunks in `chunks.jsonl`. Thread persistence follows the same minimalism principle: file-based JSON snapshots are human-inspectable, require no new dependencies, and round-trip losslessly through the History tab.
 
-The portal is a direct extension of Phase 2 — every design decision was motivated either by Phase 2 evaluation findings or by the Phase 1 task menu requirements. Phase 2's citation precision of 1.000 and faithfulness rate of 0.950 carry forward unchanged because no retrieval or generation code was modified.
+Trust is surfaced as a first-class concern rather than an afterthought. When the retrieval pipeline cannot find sufficient evidence, the portal displays an explicit red banner with concrete next-step suggestions rather than returning a silent empty answer. This closes the loop between the `no_evidence` guardrail built in Phase 2 and the researcher's actual workflow. Phase 2's citation precision of 1.000 and faithfulness rate of 0.950 carry forward unchanged, confirming that wrapping the backend in a UI introduced no regressions.

@@ -74,7 +74,7 @@ class RAGGenerator:
         self.llm = ChatOpenAI(
             model=self.config.llm_model,
             temperature=self.config.temperature,
-            max_tokens=8000,
+            max_tokens=4000,
             api_key=self.config.openai_api_key,
         )
         self.structured_llm = self.llm.with_structured_output(RAGResponse)
@@ -109,13 +109,21 @@ class RAGGenerator:
         response: RAGResponse = self.structured_llm.invoke(messages)
         return response
 
-    @staticmethod
-    def _format_context(retrieval: RetrievalResult) -> str:
+    def _format_context(self, retrieval: RetrievalResult) -> str:
+        max_chunk = self.config.max_chunk_chars
+        # ~4 chars per token for English prose
+        char_budget = self.config.max_context_tokens * 4
         parts = []
+        used = 0
         for c in retrieval.chunks:
-            parts.append(
+            text = c.text[:max_chunk]
+            block = (
                 f"--- CHUNK {c.chunk_id} (source: {c.source_id}, "
                 f"section: {c.section}, score: {c.combined_score:.3f}) ---\n"
-                f"{c.text}\n"
+                f"{text}\n"
             )
+            if used + len(block) > char_budget:
+                break
+            parts.append(block)
+            used += len(block)
         return "\n".join(parts)

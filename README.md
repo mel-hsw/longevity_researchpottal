@@ -1,7 +1,7 @@
 # Personal Research Portal — Exercise & Nutrition for Longevity
 
 Personal Research Portal (PRP) — Phase 3 deliverable for CMU AI Model Dev course.
-Phases 1 → 2 → 3: Prompting → RAG → Research Portal Product.
+Demo video: https://youtu.be/pg1iIcedV84 
 
 ## Quick Start (< 5 minutes)
 

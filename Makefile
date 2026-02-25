@@ -1,7 +1,7 @@
 PYTHON = python3
 export KMP_DUPLICATE_LIB_OK=TRUE
 
-.PHONY: setup manifest ingest query eval outputs portal clean
+.PHONY: setup manifest ingest bm25 query eval outputs portal clean
 
 setup:
 	pip install -r requirements.txt
@@ -21,6 +21,9 @@ manifest:
 ingest:
 	$(PYTHON) -m src.ingest.run_ingest
 
+bm25:
+	$(PYTHON) -c "from src.ingest.run_ingest import rebuild_bm25; rebuild_bm25()"
+
 query:
 	@if [ -z "$(QUERY)" ]; then \
 		echo "Usage: make query QUERY=\"your question here\""; \
@@ -32,7 +35,7 @@ eval:
 	$(PYTHON) -m src.eval.run_eval
 
 outputs:
-	$(PYTHON) scripts/generate_outputs.py
+	$(PYTHON) scripts/generate_phase3_artifacts.py
 
 clean:
 	rm -rf data/processed/faiss_index data/processed/bm25_index.pkl

@@ -53,11 +53,40 @@ def _build_faiss_index(chunks: list[Chunk], config: Config):
     print(f"  FAISS index saved to {config.faiss_index_dir}")
 
 
-def _build_bm25_index(chunks: list[Chunk], config: Config):
-    """Build and pickle BM25 document list for later retrieval."""
-    docs = [
-        Document(
-            page_content=c.text_raw,  # raw text without metadata prefix
+def _load_source_meta(manifest: pd.DataFrame) -> dict[str, dict]:
+    """Build a source_id → {authors, title} lookup from the manifest."""
+    return {
+        row["source_id"]: {
+            "authors": str(row.get("authors", "") or ""),
+            "title": str(row.get("title", "") or ""),
+        }
+        for _, row in manifest.iterrows()
+    }
+
+
+def _build_bm25_index(
+    chunks: list[Chunk],
+    config: Config,
+    source_meta: dict[str, dict] | None = None,
+):
+    """Build and pickle BM25 document list for later retrieval.
+
+    source_meta maps source_id → {"authors": ..., "title": ...}.  When
+    provided, each document is prefixed with author/title text so that
+    author-name queries (e.g. "Brandhorst et al.") match the right source
+    via keyword search.
+    """
+    docs = []
+    for c in chunks:
+        content = c.text_raw
+        if source_meta and c.source_id in source_meta:
+            meta = source_meta[c.source_id]
+            authors = meta.get("authors", "")
+            title = meta.get("title", "")
+            if authors or title:
+                content = f"Authors: {authors}. Title: {title}.\n{content}"
+        docs.append(Document(
+            page_content=content,
             metadata={
                 "chunk_id": c.chunk_id,
                 "source_id": c.source_id,
@@ -65,13 +94,38 @@ def _build_bm25_index(chunks: list[Chunk], config: Config):
                 "page_start": c.page_start,
                 "page_end": c.page_end,
             },
-        )
-        for c in chunks
-    ]
+        ))
     config.bm25_index_path.parent.mkdir(parents=True, exist_ok=True)
     with open(config.bm25_index_path, "wb") as f:
         pickle.dump(docs, f)
     print(f"  BM25 docs saved to {config.bm25_index_path}")
+
+
+def rebuild_bm25(config: Config | None = None):
+    """Rebuild only the BM25 index from existing chunks.jsonl — no re-embedding."""
+    config = config or Config()
+
+    if not config.chunks_path.exists():
+        raise FileNotFoundError(
+            f"chunks.jsonl not found at {config.chunks_path}. Run 'make ingest' first."
+        )
+
+    print("Loading chunks from JSONL...")
+    chunks: list[Chunk] = []
+    with open(config.chunks_path) as f:
+        for line in f:
+            chunks.append(Chunk(**json.loads(line)))
+    print(f"  Loaded {len(chunks)} chunks")
+
+    source_meta: dict[str, dict] = {}
+    if config.manifest_path.exists():
+        manifest = pd.read_csv(config.manifest_path)
+        source_meta = _load_source_meta(manifest)
+        print(f"  Loaded metadata for {len(source_meta)} sources")
+
+    print("Building BM25 index...")
+    _build_bm25_index(chunks, config, source_meta)
+    print("BM25 rebuild complete!")
 
 
 def run_ingest(config: Config | None = None):
@@ -86,6 +140,8 @@ def run_ingest(config: Config | None = None):
         print("Step 1: Loading existing manifest...")
         manifest = pd.read_csv(config.manifest_path)
     print(f"  {len(manifest)} sources in manifest")
+
+    source_meta = _load_source_meta(manifest)
 
     # 2. Parse all PDFs
     print("Step 2: Parsing PDFs...")
@@ -129,7 +185,7 @@ def run_ingest(config: Config | None = None):
 
     # 6. Build BM25 index
     print("Step 6: Building BM25 index...")
-    _build_bm25_index(all_chunks, config)
+    _build_bm25_index(all_chunks, config, source_meta)
 
     print("\nIngestion complete!")
     return all_chunks

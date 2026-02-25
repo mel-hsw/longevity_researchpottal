@@ -26,12 +26,15 @@ class Config(BaseSettings):
     vector_k: int = 10
     bm25_k: int = 10
     rerank_candidates: int = 10     # how many to send to the reranker
-    final_k: int = 6                # how many to keep after reranking
+    final_k: int = 4                # how many to keep after reranking
     similarity_threshold: float = 0.25
     vector_weight: float = 0.6
     bm25_weight: float = 0.4
     chunk_expand_window: int = 1    # add ±N adjacent chunks per retrieved chunk
-    max_chunks_after_expand: int = 10  # cap total chunks after expansion
+    max_chunks_after_expand: int = 6   # cap total chunks after expansion
+    max_chunk_chars: int = 1500     # truncate each chunk in the generator context
+    max_context_tokens: int = 1500  # hard cap on context tokens sent to the LLM
+                                    # (compare directly to max_tokens=4000 for output)
 
     # ── Chunking settings ─────────────────────────────────────────────────────
     max_chunk_tokens: int = 768
